@@ -1,0 +1,23 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: wuyu-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+dubbo:
+                      registry:
+                          address: spring-cloud://localhost:8848
+                      cloud:
+                        subscribed-services: wuyu-account-provider
+
+
+                    management:
+                      endpoints:
+                        web:
+                          exposure:
+                            include: "*"

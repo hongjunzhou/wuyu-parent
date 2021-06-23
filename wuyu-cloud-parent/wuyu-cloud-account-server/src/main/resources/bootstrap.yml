@@ -1,0 +1,30 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: wuyu-user
+  cloud:
+    nacos:
+      # 使用 nacos 服务注册和发现
+      discovery:
+        server-addr: localhost:8848
+        namespace: 58418ef9-2da3-47c3-a426-9e078515540d
+      # 使用 nacos 配置
+      config:
+        server-addr: localhost:8848
+        namespace: 58418ef9-2da3-47c3-a426-9e078515540d
+        file-extension: yaml
+        group: csm
+    # 使用 Sentinel 作为流量控制
+    sentinel:
+      transport:
+        port: 8080
+        dashboard: localhost:8080
+      datasource:
+        #其中flow是数据源名，可以自行随意修改
+        flow:
+          nacos:
+            server-addr: localhost:8848
+            data-id: ${spring.application.name}-flow-rules
+            groupId: DEFAULT_GROUP
+            rule-type: flow

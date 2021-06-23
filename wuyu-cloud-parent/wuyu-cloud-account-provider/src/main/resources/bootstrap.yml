@@ -1,0 +1,18 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: wuyu-account-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: 58418ef9-2da3-47c3-a426-9e078515540d
+      config:
+        server-addr: localhost:8848
+        namespace: 58418ef9-2da3-47c3-a426-9e078515540d
+        group: csm
+    sentinel:
+      transport:
+        port: 8080
+        dashboard: localhost:8080
